@@ -27,13 +27,13 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 	wg := sync.WaitGroup{}
-	counter := 7
+	counter := 3
 	wg.Add(counter)
 	for i := 0; i < counter; i++ {
-		titleKey, keys := checkNewKeys("сантехник")
+		titleKey, keys := checkNewKeys("электрик")
 
 		go func() {
-			handler.JptHandler(keys, titleKey)
+			handler.JptHandler(keys, titleKey, i)
 			wg.Done()
 		}()
 	}
